@@ -6,6 +6,12 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
+<header>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</header>
+
 <body>
 
 <%= yield %>
