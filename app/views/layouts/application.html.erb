@@ -10,6 +10,19 @@
 <header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <nav>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li>
+        <menu class="sessions" type="list">
+            <li><%= link_to "Register", new_traveller_registration_path %></li>
+            <li><%= link_to "Sign in", new_traveller_session_path %></li>
+            <% if current_traveller %>
+              <li><%= link_to "Sign out", destroy_traveller_session_path %></li>
+            <% end %>
+        </menu>
+      </li>
+  </nav>
 </header>
 
 <body>
