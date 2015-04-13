@@ -22,10 +22,6 @@ Given(/^a visitor has an account$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^they click on "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
 When(/^they fill in the login form$/) do
   pending # express the regexp above with the code you wish you had
 end
