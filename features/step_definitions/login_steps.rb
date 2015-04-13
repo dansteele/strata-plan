@@ -7,7 +7,8 @@ Given(/^they click on "(.*?)"$/) do |target|
 end
 
 Given(/^they fill in the registration form$/) do
-  page.fill_in 'Email', :with => "Bob" #faker
+  traveller = build(:traveller)
+  page.fill_in 'Email', :with => traveller.email
 end
 
 When(/^they press submit$/) do
