@@ -8,7 +8,8 @@ end
 
 Given(/^they fill in the registration form$/) do
   traveller = build(:traveller)
-  page.fill_in 'Email', :with => traveller.email
+  page.fill_in 'Email', with: traveller.email
+  page.fill_in 'Password', with: traveller.password
 end
 
 Then(/^there should be (\d+) users in the database$/) do |traveller_count|
