@@ -11,12 +11,8 @@ Given(/^they fill in the registration form$/) do
   page.fill_in 'Email', :with => traveller.email
 end
 
-When(/^they press submit$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^there should be (\d+) users in the database$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^there should be (\d+) users in the database$/) do |traveller_count|
+  expect(Traveller.count).to eq traveller_count
 end
 
 Given(/^a visitor has an account$/) do
