@@ -1,3 +1,7 @@
+Given(/^they are on the home page$/) do
+  visit '/'
+end
+
 Given(/^they click on "(.*?)"$/) do |target|
   click_on target
 end
