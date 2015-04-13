@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :travellers
   
-  resources :journey, only: [:index, :create]
+  resources :journey, only: [:index, :create, :show]
 
   root to: "welcome#index"
 end
