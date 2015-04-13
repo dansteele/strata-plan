@@ -35,7 +35,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
 
