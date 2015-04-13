@@ -9,9 +9,7 @@ Feature: Login
       When they click on "Sign up"
       Then there should be 1 users in the database
 
-    Scenario: A visitor logs in
-      Given a visitor has an account
-      When they click on "login"
-        And they fill in the login form
-        And they press submit
-      Then they should be logged in
+    Scenario: A traveller logs out
+      Given a traveller has signed up
+      When they click on "Sign out"
+      Then they are logged out

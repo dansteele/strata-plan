@@ -16,9 +16,10 @@
       <li>
         <menu class="sessions" type="list">
             <li><%= link_to "Register", new_traveller_registration_path %></li>
-            <li><%= link_to "Sign in", new_traveller_session_path %></li>
             <% if current_traveller %>
-              <li><%= link_to "Sign out", destroy_traveller_session_path %></li>
+              <li><%= link_to "Sign out", destroy_traveller_session_path, method: "DELETE" %></li>
+            <% else %>
+              <li><%= link_to "Sign in", new_traveller_session_path %></li>
             <% end %>
         </menu>
       </li>
