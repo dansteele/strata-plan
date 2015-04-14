@@ -20,7 +20,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'faker'
   gem 'factory_girl_rails'
-
+  gem 'selenium-webdriver'
   gem 'spring'
 end
 
