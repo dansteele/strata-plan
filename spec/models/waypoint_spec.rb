@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Waypoint, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "name generation" do
+
+    it "should save a name" do
+      @wayp = Waypoint.create(long:"51.5072", lat: "0.1275")
+      expect(@wayp.name).to_not eq nil
+    end
+
+  end
 end
