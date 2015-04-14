@@ -5,7 +5,7 @@ RSpec.describe Waypoint, type: :model do
 
     it "should save a name" do
       @wayp = Waypoint.create(longitude:51.5072, latitude: 0.1275)
-      expect(@wayp.name).to_not eq nil
+      expect(@wayp.name).to eq "Crossway, London"
     end
 
   end
