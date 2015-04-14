@@ -8,5 +8,5 @@ Given(/^they are looking at the new journey$/) do
 end
 
 Then(/^they should see a map$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page.has_content? "map-canvas")
 end
