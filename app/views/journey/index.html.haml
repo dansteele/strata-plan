@@ -1,0 +1,7 @@
+-unless @journeys
+  - @journeys.each do |j|
+    .journey-name= j.name
+-else
+  %h3 You have no journeys yet.
+
+= link_to "New journey", journey_index_path, method: "CREATE"
