@@ -1,7 +1,8 @@
--unless @journeys
+-if @journeys.length 
   - @journeys.each do |j|
     .journey-name= j.name
+    %br
 -else
   %h3 You have no journeys yet.
 
-= link_to "New journey", journey_index_path, method: "CREATE"
+= link_to "New journey", journey_index_path, method: "POST"
