@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  map = new JourneyMap(-34.397, 150.644, 9)
+  map = new JourneyMap(51.5072, 0.1275, 10)
   map.drawMap('#map-canvas')
 });
 
@@ -32,9 +32,5 @@ JourneyMap.prototype.addMarker = function(title, lat, lng, id) {
     position: new google.maps.LatLng(lat, lng),
     map: this.map,
     title: title
-  })
-  google.maps.event.addListener(marker, 'click', function(){
-    newUrl = String(window.location).replace(/#.+/g, "")
-    window.location = (newUrl+ id)
   })
 }
