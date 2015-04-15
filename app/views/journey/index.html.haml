@@ -1,7 +1,7 @@
 -if @journeys.length 
+  %ul
   - @journeys.each do |j|
-    .journey-name= j.name
-    %br
+    %li= link_to j.name, journey_path(j)
 -else
   %h3 You have no journeys yet.
 
