@@ -37,6 +37,6 @@ JourneyMap.prototype.addMarker = function(title, latLng, sync) {
     title: title
   });
   if (sync) {
-    syncMarker(marker)
+    syncMarker(latLng)
   }
 }
