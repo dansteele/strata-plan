@@ -16,14 +16,14 @@ Given(/^a traveller is looking at a map$/) do
 end
 
 Given(/^the last traveller has some waypoints$/) do
-  Traveller.last.waypoints << create(:waypoint, 3)
+  Traveller.last.journeys.last.waypoints << create(:waypoint)
+  Traveller.last.journeys.last.waypoints << create(:waypoint)
 end
 
 Then(/^they should see their waypoints$/) do
-  expect(page.all('.waypoint').count).to be 3
+  expect(page.all('.waypoint').count).to be 2
 end
 
 Then(/^they should see a map$/) do
   expect(page.has_content? "map-canvas")
 end
-

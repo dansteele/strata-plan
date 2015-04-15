@@ -11,6 +11,8 @@ Feature: Map
 
     @javascript
     Scenario: Load a journey
-      Given the last traveller has some waypoints
-      When a traveller is looking at a map
+      Given a traveller is looking at a map
+        And the last traveller has some waypoints
+        And they click on "My journeys"
+      When they click on "My new journey"
       Then they should see their waypoints
