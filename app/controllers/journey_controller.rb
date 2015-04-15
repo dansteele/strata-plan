@@ -2,6 +2,7 @@ class JourneyController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    @waypoints = @journey.waypoints
   end
 
   def index
