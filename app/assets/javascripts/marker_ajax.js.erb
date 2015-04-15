@@ -1,10 +1,8 @@
-function syncMarker(marker) {
+function syncMarker(latLng) {
+  console.log($('#map-canvas').data())
   $.ajax({
     method: "POST",
-    url: "<%= waypoint_url %>",
-    data: {marker: marker, location: window.location.href},
-    success: function() {
-      console.log("Done")
-    }
+    url: "http://localhost:3000/waypoints",
+    data: {lat: latLng.k, lng: latLng.D, journey: $('#map-canvas').data("journeyid")}
   })
 }
