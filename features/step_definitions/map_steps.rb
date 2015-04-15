@@ -16,11 +16,11 @@ Given(/^a traveller is looking at a map$/) do
 end
 
 Given(/^the last traveller has some waypoints$/) do
-  pending # express the regexp above with the code you wish you had
+  Traveller.last.waypoints << create(:waypoint, 3)
 end
 
 Then(/^they should see their waypoints$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page.all('.waypoint').count).to be 3
 end
 
 Then(/^they should see a map$/) do
