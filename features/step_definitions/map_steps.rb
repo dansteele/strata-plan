@@ -15,6 +15,14 @@ Given(/^a traveller is looking at a map$/) do
   }
 end
 
+Given(/^the last traveller has some waypoints$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^they should see their waypoints$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 Then(/^they should see a map$/) do
   expect(page.has_content? "map-canvas")
 end
