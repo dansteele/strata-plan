@@ -1,0 +1,16 @@
+<script>
+  // $(document).ready(
+  google.maps.event.addDomListener(window, 'load',
+    function() {
+    <% if @waypoints.count > 0 %>
+      map = new JourneyMap(<%= "#{@waypoints.first.latitude}, #{@waypoints.first.longitude}"%>, 9)
+      map.drawMap('#map-canvas')
+      <% @waypoints.each do |waypoint| %> 
+        var markerObj = new google.maps.LatLng(<%= "#{waypoint.longitude}, #{waypoint.latitude}"%>)
+        map.addMarker("<%= waypoint.name %>", markerObj, false)
+        map.LatLngList.push(markerObj)
+        map.fitView(map.LatLngList)
+      <% end %>
+    <% end %>
+  });
+</script>
