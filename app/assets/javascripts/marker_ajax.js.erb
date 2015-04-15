@@ -1,0 +1,10 @@
+function syncMarker(marker) {
+  $.ajax({
+    method: "POST",
+    url: "<%= waypoint_url %>",
+    data: {marker: marker, location: window.location.href},
+    success: function() {
+      console.log("Done")
+    }
+  })
+}

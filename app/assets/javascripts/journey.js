@@ -1,6 +1,9 @@
 $(document).ready(function () {
   map = new JourneyMap(51.5072, 0.1275, 10)
   map.drawMap('#map-canvas')
+  google.maps.event.addListener(map.map, 'dblclick', function(event) {
+    map.addMarker("New Waypoint",event.latLng, true);
+  });
 });
 
 function JourneyMap(lat, lng, zoom_level) {
@@ -24,13 +27,16 @@ JourneyMap.prototype.drawMap = function(jquerySelector) {
   }
   var map_canvas = $(jquerySelector)[0]
   this.map = new google.maps.Map(map_canvas, map_options);
+  this.LatLngList = [];
 }
 
-
-JourneyMap.prototype.addMarker = function(title, lat, lng, id) {
+JourneyMap.prototype.addMarker = function(title, latLng, sync) {
   var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(lat, lng),
+    position: latLng,
     map: this.map,
     title: title
-  })
+  });
+  if (sync) {
+    syncMarker(marker)
+  }
 }
