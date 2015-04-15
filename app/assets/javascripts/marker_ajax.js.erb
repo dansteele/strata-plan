@@ -3,6 +3,9 @@ function syncMarker(latLng) {
   $.ajax({
     method: "POST",
     url: "http://localhost:3000/waypoints",
-    data: {latitude: latLng.k, longitude: latLng.D, journey: $('#map-canvas').data("journeyid")}
+    data: {latitude: latLng.D, longitude: latLng.k, journey: $('#map-canvas').data("journeyid")},
+    success: function(res) {
+      $('.waypoint-list').append(res)
+    }
   })
 }
