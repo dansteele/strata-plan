@@ -10,7 +10,7 @@ Feature: Map
       Then they should see a map
 
     @javascript
-    Scenario: Add a waypoint
-      Given a traveller is looking at a map
-      When they double click on the map
-      Then they should have a new waypoint
+    Scenario: Load a journey
+      Given the last traveller has some waypoints
+      When a traveller is looking at a map
+      Then they should see their waypoints

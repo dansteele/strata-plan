@@ -15,14 +15,7 @@ Given(/^a traveller is looking at a map$/) do
   }
 end
 
-When(/^they double click on the map$/) do
-  2.times {find("#map-canvas").click}
-end
-
 Then(/^they should see a map$/) do
   expect(page.has_content? "map-canvas")
 end
 
-Then(/^they should have a new waypoint$/) do
-  expect(page.all('.waypoint').count).to be 1
-end
