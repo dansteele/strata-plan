@@ -10,6 +10,9 @@
         map.LatLngList.push(markerObj)
         map.fitView(map.LatLngList)
       <% end %>
+    <% else %>
+      map = new JourneyMap(51.5072, 0.1275, 10)
+      map.drawMap('#map-canvas')
     <% end %>
   });
 </script>
