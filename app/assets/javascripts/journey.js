@@ -1,11 +1,3 @@
-$(document).ready(function () {
-  map = new JourneyMap(51.5072, 0.1275, 10)
-  map.drawMap('#map-canvas')
-  google.maps.event.addListener(map.map, 'dblclick', function(event) {
-    map.addMarker("New Waypoint",event.latLng, true);
-  });
-});
-
 function JourneyMap(lat, lng, zoom_level) {
   this.center = new google.maps.LatLng(lat, lng);
   this.zoom_level = zoom_level;
@@ -29,6 +21,9 @@ JourneyMap.prototype.drawMap = function(jquerySelector) {
   this.map = new google.maps.Map(map_canvas, map_options);
   this.LatLngList = [];
   this.directionsSetup(this.map);
+  google.maps.event.addListener(map.map, 'dblclick', function(event) {
+    map.addMarker("New Waypoint",event.latLng, true);
+  });
 }
 
 JourneyMap.prototype.addMarker = function(title, latLng, sync) {
@@ -46,16 +41,21 @@ JourneyMap.prototype.directionsSetup = function(targetMap) {
   this.directionsService = new google.maps.DirectionsService();
   this.directionsDisplay = new google.maps.DirectionsRenderer();
   this.directionsDisplay.setMap(targetMap);
-  this.calcRoute()
+  if ($('.waypoint').length > 0) this.calcRoute(); 
 }
 
 JourneyMap.prototype.calcRoute = function(start, end) {
-  var _this = this
-  var start = "Wembley, UK";
-  var end = "Old Street, London, UK";
+  var _this = this;
+  var posList = $('.waypoint').map(function() {
+    return new google.maps.LatLng($(this).data().longitude, $(this).data().latitude)
+  });
+  var start = posList.first()[0];
+  var end = posList.last()[0];
+  posList = posList.slice(1,-1)
   var request = {
-    origin:start,
-    destination:end,
+    origin: start,
+    destination: end,
+    waypoints: _this.makeWaypoints(posList),
     travelMode: google.maps.TravelMode.DRIVING
   };
   this.directionsService.route(request, function(result, status) {
@@ -63,4 +63,14 @@ JourneyMap.prototype.calcRoute = function(start, end) {
       _this.directionsDisplay.setDirections(result);
     }
   });
+}
+
+JourneyMap.prototype.makeWaypoints = function(posList) {
+  var wpList = _.map(posList, function(pos) {
+    return {
+      location: pos,
+      stopover: false
+    }
+  })
+  return wpList;
 }
