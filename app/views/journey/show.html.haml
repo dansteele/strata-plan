@@ -3,4 +3,4 @@
 #journey-name= @journey.name
 #map-canvas{:data => {journeyID: @journey.id}}
 .waypoint-list
-  = render @journey.waypoints
+  = render @journey.waypoints.order(position: :asc)
