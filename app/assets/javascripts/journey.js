@@ -28,6 +28,7 @@ JourneyMap.prototype.drawMap = function(jquerySelector) {
   var map_canvas = $(jquerySelector)[0]
   this.map = new google.maps.Map(map_canvas, map_options);
   this.LatLngList = [];
+  this.directionsSetup(this.map);
 }
 
 JourneyMap.prototype.addMarker = function(title, latLng, sync) {
@@ -39,4 +40,27 @@ JourneyMap.prototype.addMarker = function(title, latLng, sync) {
   if (sync) {
     syncMarker(latLng)
   }
+}
+
+JourneyMap.prototype.directionsSetup = function(targetMap) {
+  this.directionsService = new google.maps.DirectionsService();
+  this.directionsDisplay = new google.maps.DirectionsRenderer();
+  this.directionsDisplay.setMap(targetMap);
+  this.calcRoute()
+}
+
+JourneyMap.prototype.calcRoute = function(start, end) {
+  var _this = this
+  var start = "Wembley, UK";
+  var end = "Old Street, London, UK";
+  var request = {
+    origin:start,
+    destination:end,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  this.directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      _this.directionsDisplay.setDirections(result);
+    }
+  });
 }
