@@ -11,6 +11,7 @@ gem 'devise'
 gem 'haml'
 gem 'geocoder'
 gem 'acts_as_list'
+gem 'underscore-rails'
 
 group :development, :test do
   gem 'byebug'
