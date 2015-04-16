@@ -1,10 +1,13 @@
-function syncMarker(latLng) {
+JourneyMap.prototype.syncMarker = function(latLng) {
+  var _this = this;
   $.ajax({
+    parent: _this,
     method: "POST",
     url: "http://localhost:3000/waypoints", // TODO: Make dynamic 
     data: {latitude: latLng.D, longitude: latLng.k, journey: $('#map-canvas').data("journeyid")},
     success: function(res) {
-      $('.waypoint-list').html(res)
+      $('.waypoint-list').html(res);
+      this.parent.updateRoute(res)
     }
   })
 }
