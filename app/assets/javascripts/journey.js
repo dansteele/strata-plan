@@ -33,7 +33,7 @@ JourneyMap.prototype.addMarker = function(title, latLng, sync) {
     title: title
   });
   if (sync) {
-    syncMarker(latLng)
+    this.syncMarker(latLng)
   }
 }
 
@@ -52,17 +52,7 @@ JourneyMap.prototype.calcRoute = function(start, end) {
   var start = posList.first()[0];
   var end = posList.last()[0];
   posList = posList.slice(1,-1)
-  var request = {
-    origin: start,
-    destination: end,
-    waypoints: _this.makeWaypoints(posList),
-    travelMode: google.maps.TravelMode.DRIVING
-  };
-  this.directionsService.route(request, function(result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      _this.directionsDisplay.setDirections(result);
-    }
-  });
+  this.fireRouteRequest(this.createRequest(start, end, posList));
 }
 
 JourneyMap.prototype.makeWaypoints = function(posList) {
@@ -73,4 +63,34 @@ JourneyMap.prototype.makeWaypoints = function(posList) {
     }
   })
   return wpList;
+}
+
+JourneyMap.prototype.createRequest = function(start, end, posList) {
+  _this = this;
+  return {
+    origin: start,
+    destination: end,
+    waypoints: _this.makeWaypoints(posList),
+    travelMode: google.maps.TravelMode.DRIVING
+  }
+}
+
+JourneyMap.prototype.updateRoute = function(wpListHtml) {
+  var waypoints = $(wpListHtml, '.waypoint')
+  var start = new google.maps.LatLng(waypoints.first().data().longitude, waypoints.first().data().latitude)
+  var end = new google.maps.LatLng(waypoints.last().data().longitude, waypoints.last().data().latitude)
+  waypoints = waypoints.slice(1, -1)
+  var posList = waypoints.not('#text').map(function() {
+    var latlng = $(this).first().data()
+    return new google.maps.LatLng(latlng.longitude, latlng.latitude)
+  });
+  this.fireRouteRequest(this.createRequest(start, end, posList));
+}
+
+JourneyMap.prototype.fireRouteRequest = function(request) {
+  this.directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      _this.directionsDisplay.setDirections(result);
+    }
+  });
 }
