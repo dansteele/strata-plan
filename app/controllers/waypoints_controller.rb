@@ -1,5 +1,10 @@
 class WaypointsController < ApplicationController
 
+  def destroy
+    Waypoint.find(params[:id]).destroy
+    render nothing: true
+  end
+
   def create
     @journey = Journey.find(params[:journey]) 
     @journey.waypoints << Waypoint.create(
