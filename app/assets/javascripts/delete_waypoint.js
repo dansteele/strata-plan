@@ -4,7 +4,7 @@ $(document).ready(function() {
     $.ajax({
       parent: _this,
       method: "DELETE",
-      url: "http://localhost:3000/waypoints/" + _this.parentElement.id, // TODO: Make dynamic 
+      url: "http://localhost:3000/waypoints/" + _this.id, // TODO: Make dynamic 
       success: function(res) {
         $(this.parent.parentElement).hide(300);
       }
