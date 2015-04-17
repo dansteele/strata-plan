@@ -1,6 +1,6 @@
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwGmEeg9OKIjaWiPE5-GnPR75Y1KXm14g"
 = content_for(:head) { render partial: "journey/load_markers" } 
-#journey-name= @journey.name
-#map-canvas{:data => {journeyID: @journey.id}}
+%h2#journey-name= @journey.name
+#map-canvas{:data => {journeyID: @journey.id}, class: "block-red-border med-dark-shadow tiny-border-radius"}
 .waypoint-list
   = render @journey.waypoints.order(position: :asc)

@@ -11,7 +11,7 @@
 <header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <nav>
+  <nav class="large-border-radius-bottom">
     <ul>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "My journeys", journey_index_path if traveller_signed_in? %></li>
@@ -29,8 +29,8 @@
 </header>
 
 <body>
-
-<%= yield %>
-
+  <div id="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

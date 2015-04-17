@@ -1,8 +1,31 @@
-.sessions {
-  background-color: #edeeff;
-  padding: 10px;
+body {
+  @extend background-blue;
 }
 
-.sessions li {
-  margin: 5px;
+nav {
+  @extend strata-pink;
+}
+
+nav ul {
+  @extend background-light;
+}
+
+.waypoint {
+  @extend background-light;
+}
+
+.journey {
+  @extend background-light;
+}
+
+background-blue {
+  background-color: #D8DAFB;
+}
+
+strata-pink {
+  background-color: #FF8686;
+}
+
+background-light {
+  background-color: #EEE;
 }

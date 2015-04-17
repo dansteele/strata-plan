@@ -1,7 +1,7 @@
 -if @journeys.length 
   %ul
   - @journeys.each do |j|
-    %li= link_to j.name, journey_path(j)
+    %li.journey{class: "large-border-radius"}= link_to j.name, journey_path(j)
 -else
   %h3 You have no journeys yet.
 
