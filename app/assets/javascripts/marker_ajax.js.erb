@@ -7,6 +7,7 @@ JourneyMap.prototype.syncMarker = function(latLng) {
     data: {latitude: latLng.D, longitude: latLng.k, journey: $('#map-canvas').data("journeyid")},
     success: function(res) {
       $('.waypoint-list').html(res);
+      addDeleteListener();
       this.parent.updateRoute(res)
     }
   })
