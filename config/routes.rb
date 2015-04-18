@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :journey, only: [:index, :create, :show, :new]
   resources :waypoints, only: [:create, :destroy]
   resources :trip, only: [:index]
-  resources :flights, only: [:index]
+  resources :flights, only: [:index, :new]
 
   root to: "welcome#index"
 end

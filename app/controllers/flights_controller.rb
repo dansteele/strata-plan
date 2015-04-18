@@ -4,4 +4,8 @@ class FlightsController < ApplicationController
     @flights = current_traveller.flights
   end
 
+  def new
+    @flight = Flight.new
+  end
+
 end

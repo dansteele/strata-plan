@@ -1,8 +1,8 @@
--if @flights.length 
+-if @flights.length > 1
   %ul
   - @flights.each do |j|
     %li.journey{class: "large-border-radius"}= link_to j.name, journey_path(j)
 -else
   %h3 You have no flights yet.
 
-= link_to "New flight", new_journey_path
+= link_to "New flight", new_flight_path

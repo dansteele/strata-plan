@@ -1,0 +1,7 @@
+= form_for @flight, url: journey_index_path do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :passengers
+  = f.select :passengers, options_for_select(0..5)
+  = f.submit
