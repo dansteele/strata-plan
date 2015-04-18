@@ -5,5 +5,6 @@ class Traveller < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :journeys
+  has_many :flights
 
 end

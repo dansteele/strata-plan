@@ -1,0 +1,3 @@
+class Flight < Journey
+
+end
