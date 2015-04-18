@@ -3,7 +3,7 @@ JourneyMap.prototype.syncMarker = function(latLng) {
   $.ajax({
     parent: _this,
     method: "POST",
-    url: "http://strata-plan.herokuapp.com/waypoints", // TODO: Make dynamic 
+    url: "http://localhost:3000/waypoints", // TODO: Make dynamic 
     data: {latitude: latLng.D, longitude: latLng.k, journey: $('#map-canvas').data("journeyid")},
     success: function(res) {
       $('.waypoint-list').html(res);
