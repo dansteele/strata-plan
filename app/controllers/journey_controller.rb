@@ -27,6 +27,7 @@ class JourneyController < ApplicationController
   end
 
   def create_from_params
+    # TODO: Review if this works with nested attributes (I think it should)
     allowed_params.keys[0].titleize.constantize.create(allowed_params.values[0]
 )
   end
