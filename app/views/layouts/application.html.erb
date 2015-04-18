@@ -16,7 +16,7 @@
     <ul>
       <li><%= link_to((image_tag "logo.png", id: "logo-main"), root_path) %></li>
       <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "My journeys", journey_index_path if traveller_signed_in? %></li>
+      <li><%= link_to "My trips", trip_index_path if traveller_signed_in? %></li>
       <li>
         <menu class="sessions" type="list">
             <li><%= link_to "Register", new_traveller_registration_path %></li>
