@@ -1,9 +1,12 @@
 Given(/^a traveller starts a new journey$/) do
+  click_on "My trips"
   click_on "My journeys"
 end
 
 Given(/^they are looking at the new journey$/) do
   click_on "New journey"
+  fill_in "Name", with: "My new journey"
+  click_on "Create Journey"
   expect(page.has_content? "My new journey").to be true
 end
 

@@ -3,6 +3,6 @@ When(/^they click on "(.*?)" for the first waypoint$/) do |css|
 end
 
 Then(/^they should no longer have that waypoint$/) do
-  sleep 1
+  sleep 2
   expect(Traveller.last.journeys.last.waypoints.count).to be 2
 end
