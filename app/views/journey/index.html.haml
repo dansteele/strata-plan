@@ -1,4 +1,4 @@
--if @journeys.length 
+-if @journeys.length > 0
   %ul
   - @journeys.each do |j|
     %li.journey{class: "large-border-radius"}= link_to j.name, journey_path(j)
