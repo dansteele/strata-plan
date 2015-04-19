@@ -6,6 +6,7 @@ class FlightsController < ApplicationController
 
   def new
     @flight = Flight.new
+    @flight.flight_plan = FlightPlan.new
   end
 
 end
