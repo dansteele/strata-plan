@@ -13,7 +13,7 @@
     Scenario: Load a journey
       Then they should see their waypoints
 
-    @javascript
+    @javascript @wip
     Scenario: Delete a waypoint
       When they click on ".delete-button" for the first waypoint
       Then they should no longer have that waypoint
