@@ -11,19 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418134937) do
+ActiveRecord::Schema.define(version: 20150419105022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "flight_plans", force: :cascade do |t|
+    t.point    "start"
+    t.point    "end"
+    t.string   "start_airport"
+    t.string   "end_airport"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "flight_id"
+  end
+
   create_table "journeys", force: :cascade do |t|
     t.integer  "traveller_id"
     t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "type"
     t.string   "start_airport"
     t.integer  "passengers"
+    t.integer  "flight_plan_id"
   end
 
   create_table "travellers", force: :cascade do |t|
@@ -47,11 +58,12 @@ ActiveRecord::Schema.define(version: 20150418134937) do
   create_table "waypoints", force: :cascade do |t|
     t.integer  "journey_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "position"
+    t.string   "nearest_airport"
   end
 
 end
