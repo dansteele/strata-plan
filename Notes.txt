@@ -1,0 +1,3 @@
+Notes:
+Wed-Fri not moved because did not look in to directions API
+Sat-Sun slow because APIs fighting against me (Looking at you: https://www.developer.aero/Airport-API/API-Overview)

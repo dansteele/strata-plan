@@ -8,7 +8,6 @@ RSpec.describe FlightPlan, type: :model do
       @flight.reload
     end
 
-
     it "should be part of a flight" do
       expect(@flight.flight_plan.start).to_not be nil
     end
@@ -16,7 +15,6 @@ RSpec.describe FlightPlan, type: :model do
     it "should find the nearest airport" do
       expect(@flight.flight_plan.start_airport).to eq "Heathrow"
     end
-
 
   end
 end
