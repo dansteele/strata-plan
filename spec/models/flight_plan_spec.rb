@@ -4,7 +4,7 @@ RSpec.describe FlightPlan, type: :model do
   describe "test associations" do
     before do
       @flight = Flight.create(name: "test")
-      @flight.flight_plan.start = [Factorygirl::create(:waypoint).longitude, Factorygirl::create(:waypoint).latitude].join ","
+      @flight.update(flight_plan: FlightPlan.create(start: "-0.5,51.123154"))
     end
 
 
