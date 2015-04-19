@@ -4,4 +4,12 @@
 
   = f.label :passengers
   = f.select :passengers, options_for_select(0..5)
+
+  = f.fields_for :flight_plan do |plan|
+    = plan.label :start_airport, "IATA code"
+    = plan.text_field :start_airport, placeholder: "EGLL"
+
+    = plan.label :end_airport, "IATA code"
+    = plan.text_field :end_airport, placeholder: "KJFK"
+
   = f.submit
