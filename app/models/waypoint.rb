@@ -21,7 +21,7 @@ class Waypoint < ActiveRecord::Base
   end
 
   def notify_observers_of_create
-    Flight.notify_waypoint_create(self)
+    self.flight.notify_waypoint_create(self) if self.journey.type == "flight"
   end
 
 end
