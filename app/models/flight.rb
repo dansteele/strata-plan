@@ -2,7 +2,7 @@ class Flight < Journey
 
   has_one :flight_plan
 
-  def self.notify_waypoint_create waypoint
+  def notify_waypoint_create waypoint
     self.flight_plan.end = [waypoint.longitude, waypoint.latitude].join ","
   end
 
