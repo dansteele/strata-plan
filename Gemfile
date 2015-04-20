@@ -13,6 +13,8 @@ gem 'geocoder'
 gem 'acts_as_list'
 gem 'underscore-rails'
 gem 'rails_12factor', group: :production
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'
