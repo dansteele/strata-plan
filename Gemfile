@@ -15,6 +15,8 @@ gem 'underscore-rails'
 gem 'rails_12factor', group: :production
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'httparty'
+gem 'nokogiri'
+gem 'smarter_csv'
 
 group :development, :test do
   gem 'byebug'
