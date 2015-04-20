@@ -6,10 +6,16 @@
   = f.select :passengers, options_for_select(0..5)
 
   = f.fields_for :flight_plan do |plan|
-    = plan.label :start_airport, "Start IATA code"
-    = plan.text_field :start_airport, placeholder: "LHR"
+    = plan.label :start_city
+    = plan.text_field :start_city, placeholder: "Swansea"
 
-    = plan.label :end_airport, "End IATA code"
-    = plan.text_field :end_airport, placeholder: "JFK"
+    = plan.label :start_country
+    = plan.text_field :start_country, placeholder: "UK"
+
+    = plan.label :end_city
+    = plan.text_field :end_city, placeholder: "Dusseldorf"
+
+    = plan.label :end_country
+    = plan.text_field :end_country, placeholder: "Germany"
 
   = f.submit
