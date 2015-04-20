@@ -11,8 +11,8 @@ class FlightPlan < ActiveRecord::Base
   before_save do
     # self.start = Airport::lng_lat_of_airport self.start_airport
     # self.end = Airport::lng_lat_of_airport self.end_airport
-    self.start_airport = Airport.near([start_city, start_country].join ", ").first
-    self.end_airport = Airport.near([end_city, end_country].join ", ", 20).first
+    self.start_airport = Airport.near([start_city, start_country].join ", ", 100).first
+    self.end_airport = Airport.near([end_city, end_country].join ", ", 100).first
   end
 
 end
