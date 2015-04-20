@@ -4,6 +4,7 @@ class FlightPlan < ActiveRecord::Base
   #   Resque.new << GeocodeAirportCode.new
   # end
 
+  has_one :flight_plan
   belongs_to :start_airport, :foreign_key => 'start_airport_id', :class_name => "Airport"
   belongs_to :end_airport, :foreign_key => 'end_airport_id', :class_name => "Airport"
   # belongs_to :airport, as: :end_airport
