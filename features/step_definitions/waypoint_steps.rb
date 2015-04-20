@@ -1,5 +1,4 @@
 When(/^they click on "(.*?)" for the first waypoint$/) do |css|
-  binding.pry
   first(css).click
 end
 

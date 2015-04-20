@@ -9,5 +9,5 @@ Feature: Flight
     @wip
     Scenario: A traveller starts a new flight
       Given they click on "New flight"
-      When create a flight for 2 people from "Heathrow" to "Dusseldorf"
+      When create a flight for 2 people from "Swansea, UK" to "Dusseldorf, Germany"
       Then they should see "LHR" and "DUS"

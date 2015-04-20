@@ -1,7 +1,11 @@
 When(/^create a flight for (\d+) people from "(.*?)" to "(.*?)"$/) do |people, start, finish|
-  fill_in "Passengers", with: people
-  fill_in "Start", with: start
-  fill_in "End", with: finish
+  start_city, start_country = start.split ", "
+  finish_city, finish_country = finish.split ", "
+  select people, from: "Passengers"
+  fill_in "Start city", with: start_city
+  fill_in "Start country", with: start_country
+  fill_in "End city", with: finish_city
+  fill_in "End country", with: finish_country
 end
 
 Then(/^they should see "(.*?)" and "(.*?)"$/) do |iata1, iata2|
