@@ -23,7 +23,7 @@ class JourneyController < ApplicationController
 
   private
   def allowed_params
-    params.permit(journey: [:name], flight: [:name, :passengers, flight_plan_attributes: [:start_airport, :end_airport]])
+    params.permit(journey: [:name], flight: [:name, :passengers, flight_plan_attributes: [:start_city, :end_city, :start_country, :end_country]])
   end
 
   def create_from_params
