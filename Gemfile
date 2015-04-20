@@ -29,5 +29,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'spring'
+  gem 'launchy'
 end
 
