@@ -1,6 +1,7 @@
 When(/^create a flight for (\d+) people from "(.*?)" to "(.*?)"$/) do |people, start, finish|
   start_city, start_country = start.split ", "
   finish_city, finish_country = finish.split ", "
+  fill_in "Name", with: "Test"
   select people, from: "Passengers"
   fill_in "Start city", with: start_city
   fill_in "Start country", with: start_country
