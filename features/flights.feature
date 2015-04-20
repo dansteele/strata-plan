@@ -10,4 +10,4 @@ Feature: Flight
     Scenario: A traveller starts a new flight
       Given they click on "New flight"
       When create a flight for 2 people from "Swansea, UK" to "Dusseldorf, Germany"
-      Then they should see "SWS" and "DUS"
+      Then they should see "SWS" and "QDU"
