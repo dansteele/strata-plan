@@ -30,5 +30,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'spring'
   gem 'launchy'
+  gem 'simplecov', :require => false, :group => :test
 end
 
