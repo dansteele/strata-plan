@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+def parse file_path
+  data = SmarterCSV.process(file_path)
+  data.each do |d|
+    Airport.create(d)
+  end
+end
+
+parse "lib/data/airports.csv"
