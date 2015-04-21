@@ -6,7 +6,7 @@ class FlightPlan < ActiveRecord::Base
 
   validates :start_airport, :end_airport, presence: true
 
-  has_one :flight_plan
+  belongs_to :flight
   belongs_to :start_airport, :foreign_key => 'start_airport_id', :class_name => "Airport"
   belongs_to :end_airport, :foreign_key => 'end_airport_id', :class_name => "Airport"
   # belongs_to :airport, as: :end_airport
@@ -14,8 +14,24 @@ class FlightPlan < ActiveRecord::Base
   before_validation do
     # self.start = Airport::lng_lat_of_airport self.start_airport
     # self.end = Airport::lng_lat_of_airport self.end_airport
-    self.start_airport = Airport.near(([start_city, start_country].join ", "), 100).order("distance").first
-    self.end_airport = Airport.near(([end_city, end_country].join ", "), 100).order("distance").first
+    self.start_airport = find_nearest_airport start_city, start_country
+    self.end_airport = find_nearest_airport end_city, end_country
   end
 
+  before_save do
+    if self.flight && self.flight.waypoints.count < 2
+      self.flight.waypoints << create_wp(start_airport)
+      self.flight.waypoints << create_wp(end_airport)
+    end
+  end
+
+  private
+  def find_nearest_airport city, country
+    Airport.near(([city, country].join ", "), 100).order("distance").first
+  end
+
+  def create_wp airport
+    Waypoint.create(name: airport.name, 
+    latitude: airport.latitude, longitude: airport.longitude)
+  end
 end
