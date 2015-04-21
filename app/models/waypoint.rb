@@ -9,11 +9,15 @@ class Waypoint < ActiveRecord::Base
     end
   end
 
-  after_validation :reverse_geocode
+  after_validation :check_if_needs_to_geocode
 
   private
   def find_nearest_airport
     "Heathrow"
+  end
+
+  def check_if_needs_to_geocode
+    reverse_geocode if name == nil
   end
 
 end
