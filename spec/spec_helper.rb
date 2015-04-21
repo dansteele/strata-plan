@@ -7,3 +7,4 @@ RSpec.configure do |config|
   end
   config.mock_with :mocha
 end
+require "lib/modules/mock_shortener_module"
