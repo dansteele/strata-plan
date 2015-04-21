@@ -32,5 +32,6 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov', :require => false, :group => :test
   gem 'webmock'
+  gem 'mocha'
 end
 
