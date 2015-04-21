@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe FlightPlan, type: :model do
   describe "relationships" do
     before do
-      # WebMock.allow_net_connect!
-      require "stubs/mock_shortener_module.rb"
+      require "lib/modules/mock_shortener_module"
       MockShortener::mock "Hayes, UK", "flight_start_geocode"
       MockShortener::mock "Dusseldorf, Germany", "flight_end_geocode"
 
