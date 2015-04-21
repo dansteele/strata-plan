@@ -57,3 +57,10 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 World(FactoryGirl::Syntax::Methods)
+require'rspec/core'
+require 'cucumber/rspec/doubles' 
+RSpec.configure do |c|
+ c.mock_framework = :mocha
+end
+require "./spec/lib/modules/mock_shortener_module.rb"
+ WebMock.disable_net_connect!(:allow_localhost => true)
