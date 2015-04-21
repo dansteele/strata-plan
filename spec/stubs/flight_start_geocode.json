@@ -1,0 +1,59 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Hayes",
+               "short_name" : "Hayes",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Greater London",
+               "short_name" : "Gt Lon",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hayes, Greater London, UK",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 51.5500689,
+                  "lng" : -0.3759291
+               },
+               "southwest" : {
+                  "lat" : 51.4924709,
+                  "lng" : -0.4517255
+               }
+            },
+            "location" : {
+               "lat" : 51.516758,
+               "lng" : -0.436786
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.5500689,
+                  "lng" : -0.3759291
+               },
+               "southwest" : {
+                  "lat" : 51.4924709,
+                  "lng" : -0.4517255
+               }
+            }
+         },
+         "place_id" : "ChIJb_GSPXttdkgRlrHXw1Whtmo",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
