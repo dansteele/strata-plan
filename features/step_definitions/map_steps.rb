@@ -19,6 +19,7 @@ Given(/^a traveller is looking at a map$/) do
 end
 
 Given(/^the last traveller has some waypoints$/) do
+  WebMock.allow_net_connect!
   Traveller.last.journeys.last.waypoints << create(:waypoint)
   Traveller.last.journeys.last.waypoints << create(:waypoint)
   Traveller.last.journeys.last.waypoints << create(:waypoint)
