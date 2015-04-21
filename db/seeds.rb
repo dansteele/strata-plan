@@ -12,4 +12,6 @@ def parse file_path
   end
 end
 
-parse "lib/data/airports.csv"
+Airport.transaction do
+  parse "lib/data/airports.csv"
+end
