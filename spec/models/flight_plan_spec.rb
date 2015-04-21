@@ -30,5 +30,11 @@ RSpec.describe FlightPlan, type: :model do
       ).to be_within(10).of(310)
     end
 
+    it "should add the start and end points as waypoints" do
+      expect(@flight.waypoints.count).to be 2
+      expect(@flight.waypoints.second.name).to eq "Dusseldorf"
+      expect(@flight.waypoints.second.latitude).to eq 51.289444
+    end
+
   end
 end
