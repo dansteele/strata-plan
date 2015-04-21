@@ -31,5 +31,6 @@ group :development, :test do
   gem 'spring'
   gem 'launchy'
   gem 'simplecov', :require => false, :group => :test
+  gem 'webmock'
 end
 
