@@ -1,4 +1,10 @@
+When(/^there are airports in the database$/) do
+  require "./db/seeds"
+end
+
 When(/^create a flight for (\d+) people from "(.*?)" to "(.*?)"$/) do |people, start, finish|
+  MockShortener::mock start, "swansea"
+  MockShortener::mock finish, "dusseldorf"
   start_city, start_country = start.split ", "
   finish_city, finish_country = finish.split ", "
   fill_in "Name", with: "Test"
