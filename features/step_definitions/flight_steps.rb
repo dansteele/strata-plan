@@ -16,7 +16,7 @@ When(/^create a flight for (\d+) people from "(.*?)" to "(.*?)"$/) do |people, s
   click_on "Create Flight"
 end
 
-Then(/^they should see "(.*?)" and "(.*?)"$/) do |iata1, iata2|
-  expect(page.has_content? iata1).to be true
-  expect(page.has_content? iata2).to be true
+Then(/^they should see "(.*?)" and "(.*?)"$/) do |item1, item2|
+  expect(page.has_content? item1).to be true
+  expect(page.has_content? item2).to be true
 end
