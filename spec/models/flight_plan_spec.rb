@@ -57,7 +57,7 @@ RSpec.describe FlightPlan, type: :model do
     end
 
     it "should save the right price of a different flight" do
-      expect(@flight.flight_plan.price).to be_within(100).of(600)
+      expect(@flight.flight_plan.price).to be_within(100).of(1000)
     end
   end
 
