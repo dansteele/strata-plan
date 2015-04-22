@@ -10,13 +10,14 @@ class JourneyController < ApplicationController
   end
 
   def index
-    @journeys = current_traveller.journeys
+    @journeys = current_traveller.journeys.where(type: nil)
   end
 
   def create
     if current_traveller.journeys << create_from_params
       redirect_to journey_path(current_traveller.journeys.last)
     else
+      binding.pry
       render text: "Unable to create journey"
     end
   end
