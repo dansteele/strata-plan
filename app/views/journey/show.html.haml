@@ -9,6 +9,6 @@
   #total_distance 
     Total distance:
     = "#{@journey.flight_plan.total_distance}M"
-#map-canvas{:data => {journeyID: @journey.id}, class: "block-red-border med-dark-shadow tiny-border-radius"}
+#map-canvas{:data => {journeyID: @journey.id}, class: "block-red-border med-light-shadow tiny-border-radius"}
 .waypoint-list
   = render @journey.waypoints.order(position: :asc)

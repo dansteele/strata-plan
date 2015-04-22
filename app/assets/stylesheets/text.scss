@@ -1,6 +1,7 @@
 body {
   font-family: 'Ubuntu', sans-serif;
-  color: #200B44;
+  color: #0CBABA;
+  font-size: 1.1rem;
 }
 
 a:hover {
@@ -8,8 +9,16 @@ a:hover {
   transition: all 0.2s ease-in-out;
 }
 
+h1 {
+  font-size: 1.8rem;
+}
+
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.3rem;
 }
 
 #journey-name {

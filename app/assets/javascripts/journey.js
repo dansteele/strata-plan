@@ -13,9 +13,13 @@ JourneyMap.prototype.fitView = function(latLngList) {
 }
 
 JourneyMap.prototype.drawMap = function(jquerySelector) {
+  var styledMap = new google.maps.StyledMapType(this.styles(), {name: "Styled Map"});
   var map_options = {
     center: this.center,
-    zoom: this.zoom_level
+    zoom: this.zoom_level,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+    }
   }
   var map_canvas = $(jquerySelector)[0]
   this.map = new google.maps.Map(map_canvas, map_options);
@@ -24,6 +28,34 @@ JourneyMap.prototype.drawMap = function(jquerySelector) {
   google.maps.event.addListener(map.map, 'dblclick', function(event) {
     map.addMarker("New Waypoint",event.latLng, true);
   });
+  this.map.mapTypes.set('map_style', styledMap);
+  this.map.setMapTypeId('map_style');
+}
+
+JourneyMap.prototype.styles = function() {
+  return [
+    {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "invert_lightness": true
+            },
+            {
+                "saturation": 10
+            },
+            {
+                "lightness": 30
+            },
+            {
+                "gamma": 0.5
+            },
+            {
+                "hue": "#435158"
+            }
+        ]
+    }
+]
 }
 
 JourneyMap.prototype.addMarker = function(title, latLng, sync) {
