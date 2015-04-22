@@ -33,7 +33,7 @@ RSpec.describe FlightPlan, type: :model do
     it "should add the start and end points as waypoints" do
       expect(@flight.waypoints.count).to be 2
       expect(@flight.waypoints.second.name).to eq "Dusseldorf"
-      expect(@flight.waypoints.second.latitude).to eq 51.289444
+      expect(@flight.waypoints.second.latitude).to eq 6.766667
     end
 
     it "should save the total distance between the airports" do
