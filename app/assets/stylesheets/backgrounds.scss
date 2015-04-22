@@ -1,5 +1,5 @@
 body {
-  @extend background-blue;
+  @extend background-tile;
 }
 
 nav {
@@ -28,4 +28,8 @@ strata-pink {
 
 background-light {
   background-color: #EEE;
+}
+
+background-tile {
+  background-image: url("tile.jpg")
 }
