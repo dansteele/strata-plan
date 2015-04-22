@@ -1,7 +1,11 @@
-body {
+body, input[type="submit"] {
   font-family: 'Ubuntu', sans-serif;
   color: #0CBABA;
   font-size: 1.1rem;
+}
+
+input[type="submit"] {
+  color: #fff
 }
 
 a:hover {

@@ -15,5 +15,12 @@ body {
 }
 
 form input, form select {
-  display:block
+  display:block;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background: #0CBABA;
+  background-image: linear-gradient(to bottom, #0CBABA, #2980b9);
+  border-radius: 10px;
 }
