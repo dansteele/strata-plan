@@ -18,6 +18,11 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'smarter_csv'
 
+group :test do
+  gem 'webmock'
+end
+
+
 group :development, :test do
   gem 'byebug'
   gem 'pry'
@@ -31,7 +36,6 @@ group :development, :test do
   gem 'spring'
   gem 'launchy'
   gem 'simplecov', :require => false, :group => :test
-  gem 'webmock'
   gem 'mocha'
 end
 
