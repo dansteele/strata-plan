@@ -32,6 +32,6 @@ class FlightPlan < ActiveRecord::Base
 
   def create_wp airport
     Waypoint.create(name: airport.name, 
-    latitude: airport.latitude, longitude: airport.longitude)
+    latitude: airport.longitude, longitude: airport.latitude)
   end
 end
