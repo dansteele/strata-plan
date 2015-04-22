@@ -31,20 +31,20 @@ class FlightPlan < ActiveRecord::Base
 
   private
   def find_nearest_airport city, country
-    Airport.near(([city, country].join ", "), 100).order("distance").first
+    Airport.near(([city, country].join ", "), 500).order("distance").first
   end
 
   def create_wp airport
     Waypoint.create(name: airport.name, 
-    latitude: airport.latitude, longitude: airport.longitude)
+    latitude: airport.longitude, longitude: airport.latitude)
   end
 
   def calc_distance
-    self.start_airport.distance_to self.end_airport
+    (self.start_airport.distance_to self.end_airport).round(0)
   end
 
   def calc_price
     # Currently using made-up formula
-    (self.flight.passengers) * (5 * (Math.sqrt(calc_distance*2) + 8))
+    ((self.flight.passengers) * (5 * (Math.sqrt(calc_distance*2) + 8))).round(2)
   end
 end
