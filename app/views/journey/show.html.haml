@@ -1,7 +1,14 @@
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwGmEeg9OKIjaWiPE5-GnPR75Y1KXm14g"
 = content_for(:head) { render partial: "journey/load_markers" } 
 %h2#journey-name= @journey.name
-%h3#journey-itinery= "#{@journey.flight_plan.start_airport.iata} to #{@journey.flight_plan.end_airport.iata}" if @journey.type == "Flight"
+-if @journey.type == "Flight"
+  %h3#journey-itinery= "#{@journey.flight_plan.start_airport.iata} to #{@journey.flight_plan.end_airport.iata}" 
+  #price 
+    Price:
+    = ("&pound;#{@journey.flight_plan.price} for #{@journey.passengers} passengers").html_safe
+  #total_distance 
+    Total distance:
+    = "#{@journey.flight_plan.total_distance}M"
 #map-canvas{:data => {journeyID: @journey.id}, class: "block-red-border med-dark-shadow tiny-border-radius"}
 .waypoint-list
   = render @journey.waypoints.order(position: :asc)
