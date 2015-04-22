@@ -19,9 +19,12 @@ class FlightPlan < ActiveRecord::Base
   end
 
   before_save do
-    if self.flight && self.flight.waypoints.count < 2
-      self.flight.waypoints << create_wp(start_airport)
-      self.flight.waypoints << create_wp(end_airport)
+    if self.flight
+      self.price = calc_price
+      if self.flight && self.flight.waypoints.count < 2
+        self.flight.waypoints << create_wp(start_airport)
+        self.flight.waypoints << create_wp(end_airport)
+      end
     end
     self.total_distance = calc_distance
   end
@@ -38,5 +41,10 @@ class FlightPlan < ActiveRecord::Base
 
   def calc_distance
     self.start_airport.distance_to self.end_airport
+  end
+
+  def calc_price
+    # Currently using made-up formula
+    ((self.flight.passengers) - 0.8) * (0.8 * Math.sqrt(calc_distance))
   end
 end

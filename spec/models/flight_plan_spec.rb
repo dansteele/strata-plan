@@ -7,10 +7,10 @@ RSpec.describe FlightPlan, type: :model do
       MockShortener::mock "Hayes, UK", "flight_start_geocode"
       MockShortener::mock "Dusseldorf, Germany", "flight_end_geocode"
 
-      @flight = Flight.create(name: "test")
-      Airport.create(name: "Heathrow", longitude: -0.5, latitude: 51.123)
-      Airport.create(name: "Dusseldorf", longitude: 6.766667, latitude: 51.289444)
-      @flight.update(flight_plan: FlightPlan.create(start_city: "Hayes", start_country: "UK",
+      @flight = Flight.create!(name: "test", passengers: 2)
+      Airport.create!(name: "Heathrow", longitude: -0.5, latitude: 51.123)
+      Airport.create!(name: "Dusseldorf", longitude: 6.766667, latitude: 51.289444)
+      @flight.update!(flight_plan: FlightPlan.create(start_city: "Hayes", start_country: "UK",
       end_city: "Dusseldorf", end_country: "Germany"   ))
       @flight.reload
     end
@@ -41,8 +41,25 @@ RSpec.describe FlightPlan, type: :model do
     end
 
     it "should save the price of the flight" do
-      expect(@flight.flight_plan.price).to be_within(50).of(200)
+      expect(@flight.flight_plan.price).to be_within(50).of(300)
     end
 
   end
+  describe "calc price of a different flight" do
+    before do
+      MockShortener::mock "New York City, US", "jfk"
+      @flight = Flight.create!(name: "test 2", passengers: 2)
+      Airport.create!(name: "Heathrow", longitude: -0.5, latitude: 51.123)
+      Airport.create!(name: "New York", longitude: -74, latitude: 40)
+      @flight.update!(flight_plan: FlightPlan.create(start_city: "Hayes", start_country: "UK",
+      end_city: "New York City", end_country: "US"   ))
+      @flight.reload
+    end
+
+    it "should save the right price of a different flight" do
+      expect(@flight.flight_plan.price).to be_within(100).of(600)
+    end
+  end
+
+
 end
