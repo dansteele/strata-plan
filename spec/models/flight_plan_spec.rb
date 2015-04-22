@@ -36,5 +36,13 @@ RSpec.describe FlightPlan, type: :model do
       expect(@flight.waypoints.second.latitude).to eq 51.289444
     end
 
+    it "should save the total distance between the airports" do
+      expect(@flight.flight_plan.total_distance).to be_within(10).of(310)
+    end
+
+    it "should save the price of the flight" do
+      expect(@flight.flight_plan.price).to be_within(50).of(200)
+    end
+
   end
 end
