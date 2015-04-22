@@ -23,6 +23,7 @@ class FlightPlan < ActiveRecord::Base
       self.flight.waypoints << create_wp(start_airport)
       self.flight.waypoints << create_wp(end_airport)
     end
+    self.total_distance = calc_distance
   end
 
   private
@@ -33,5 +34,9 @@ class FlightPlan < ActiveRecord::Base
   def create_wp airport
     Waypoint.create(name: airport.name, 
     latitude: airport.latitude, longitude: airport.longitude)
+  end
+
+  def calc_distance
+    self.start_airport.distance_to self.end_airport
   end
 end
