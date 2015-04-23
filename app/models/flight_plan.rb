@@ -7,6 +7,7 @@ class FlightPlan < ActiveRecord::Base
   validates :start_airport, :end_airport, presence: true
 
   belongs_to :flight
+  belongs_to :nearest_observation, :foreign_key => 'observation_id', :class_name => "Observation"
   belongs_to :start_airport, :foreign_key => 'start_airport_id', :class_name => "Airport"
   belongs_to :end_airport, :foreign_key => 'end_airport_id', :class_name => "Airport"
 
@@ -22,6 +23,7 @@ class FlightPlan < ActiveRecord::Base
         self.flight.waypoints << create_wp(start_airport)
         self.flight.waypoints << create_wp(end_airport)
       end
+      self.nearest_observation = find_nearest_observation
     end
     self.total_distance = calc_distance
   end
@@ -43,4 +45,9 @@ class FlightPlan < ActiveRecord::Base
   def calc_price
     ((self.flight.passengers) * (5 * (Math.sqrt(calc_distance*2) + 8))).round(2)
   end
+
+  def find_nearest_observation
+    Observation.near(self.start_airport, 100).order("distance").first
+  end
+
 end
