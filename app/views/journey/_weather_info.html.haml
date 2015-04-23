@@ -2,4 +2,5 @@
   - @obs = @journey.flight_plan.nearest_observation
   %ul
     %li= ("The nearest weather station is #{@obs.name.titleize}").html_safe 
-    %li= ("Wind #{@obs.wind_direction}&deg; at #{@obs.wind_speed}").html_safe 
+    %li= ("Wind #{@obs.wind_direction}&deg; at #{@obs.wind_speed}mph").html_safe
+    
