@@ -25,6 +25,17 @@ Given(/^the last traveller has some waypoints$/) do
   Traveller.last.journeys.last.waypoints << create(:waypoint)
 end
 
+When(/^there's another journey in the database$/) do
+  @trav = create(:traveller)
+  @trav.journeys << Journey.create(name: "Bob's journey")
+  @trav.save!
+end
+
+Then(/^they are redirected if they try and visit it$/) do
+  visit "/journey/#{Journey.last.id}"
+  expect(page.has_content? "My new journey").to be true # Name of their own journey
+end
+
 Then(/^they should see their waypoints$/) do
   expect(page.all('.waypoint').count).to be 3
 end
