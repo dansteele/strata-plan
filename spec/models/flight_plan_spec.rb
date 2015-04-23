@@ -8,6 +8,8 @@ RSpec.describe FlightPlan, type: :model do
       MockShortener::mock "Hayes, UK", "flight_start_geocode"
       MockShortener::mock "Dusseldorf, Germany", "flight_end_geocode"
 
+      Observation.create(latitude: 51.1, longitude: -0.5, wind_speed: 20, wind_direction: 90)
+
       @flight = Flight.create!(name: "test", passengers: 2)
       Airport.create!(name: "Heathrow", longitude: -0.5, latitude: 51.123)
       Airport.create!(name: "Dusseldorf", longitude: 6.766667, latitude: 51.289444)
@@ -47,6 +49,14 @@ RSpec.describe FlightPlan, type: :model do
 
     it "should have a weather observation" do
       expect(@flight.flight_plan.nearest_observation).to_not be nil
+    end
+
+    it "should show the overall bearing of the flight" do
+      expect(@flight.flight_plan.bearing).to_not be nil
+    end
+
+    it "should show headwind" do
+      expect(@flight.flight_plan.get_headwind).to_not be nil
     end
 
     after do
