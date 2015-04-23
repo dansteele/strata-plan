@@ -3,7 +3,7 @@
   = f.text_field :name
 
   = f.label :passengers
-  = f.select :passengers, options_for_select(0..5)
+  = f.select :passengers, options_for_select(1..5)
 
   = f.fields_for :flight_plan do |plan|
     = plan.label :start_city
