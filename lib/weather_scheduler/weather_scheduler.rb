@@ -20,6 +20,7 @@ scheduler.every '30m' do
   "val/wxobs/all/json/all?res=hourly&key=e3c245e1-ec02-422a-a9f7-16dbc46ee0bb")
 
   res["SiteRep"]["DV"]["Location"].each_with_index do |loc, i|
+    next unless loc["Period"].class == Array
     @rep = loc["Period"].first["Rep"].first
     unless @rep.class == Fixnum || @rep["D"].nil? || @rep["S"].nil? || @rep["P"].nil?
       unless @rep["D"].length == 0 || @rep["S"].length == 0 || @rep["P"].length == 0
@@ -35,6 +36,7 @@ scheduler.every '30m' do
       end
     end
   end
+  puts "Weather synched at #{Time.now}"
 end
 
 scheduler.join
