@@ -44,6 +44,10 @@ RSpec.describe FlightPlan, type: :model do
       expect(@flight.flight_plan.price).to be_within(50).of(300)
     end
 
+    it "should have a weather observation" do
+      expect(@flight.flight_plan.nearest_observation).to_not be nil
+    end
+
   end
   describe "calc price of a different flight" do
     before do
