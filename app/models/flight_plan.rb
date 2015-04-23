@@ -41,7 +41,6 @@ class FlightPlan < ActiveRecord::Base
   end
 
   def calc_price
-    # Currently using made-up formula
     ((self.flight.passengers) * (5 * (Math.sqrt(calc_distance*2) + 8))).round(2)
   end
 end
