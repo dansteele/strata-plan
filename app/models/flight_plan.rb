@@ -24,8 +24,13 @@ class FlightPlan < ActiveRecord::Base
         self.flight.waypoints << create_wp(end_airport)
       end
       self.nearest_observation = find_nearest_observation
+      self.bearing = find_bearing
     end
     self.total_distance = calc_distance
+  end
+
+  def get_headwind
+    (Math.cos(get_heading_difference) * self.nearest_observation.wind_speed).round
   end
 
   private
@@ -49,5 +54,15 @@ class FlightPlan < ActiveRecord::Base
   def find_nearest_observation
     Observation.near(self.start_airport, 100).order("distance").first
   end
+
+  def find_bearing
+    self.start_airport.bearing_to(self.end_airport)
+  end
+
+  def get_heading_difference
+    heading_difference = (self.bearing - self.nearest_observation.wind_direction).abs
+    heading_difference = heading_difference * (Math::PI / 180)
+  end
+
 
 end
