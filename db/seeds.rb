@@ -12,10 +12,8 @@ def parse file_path
   end
 end
 
-unless Rails.env.test?
-  Airport.transaction do
-    parse "lib/data/airports.csv"
-  end
+Airport.transaction do
+  parse "lib/data/airports.csv"
 end
 
 require "geocoder"
