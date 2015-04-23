@@ -9,7 +9,6 @@ Feature: Map
         And they are looking at the new journey
       Then they should see a map
 
-    @wip
     Scenario: Can only view their own map
       Given a traveller starts a new journey
         And they are looking at the new journey

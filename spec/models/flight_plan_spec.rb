@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe FlightPlan, type: :model do
   describe "relationships" do
     before do
+      # require "./db/seeds"
       require "lib/modules/mock_shortener_module"
       MockShortener::mock "Hayes, UK", "flight_start_geocode"
       MockShortener::mock "Dusseldorf, Germany", "flight_end_geocode"
@@ -48,6 +49,10 @@ RSpec.describe FlightPlan, type: :model do
       expect(@flight.flight_plan.nearest_observation).to_not be nil
     end
 
+    after do
+      DatabaseCleaner.clean
+    end
+
   end
   describe "calc price of a different flight" do
     before do
@@ -62,6 +67,10 @@ RSpec.describe FlightPlan, type: :model do
 
     it "should save the right price of a different flight" do
       expect(@flight.flight_plan.price).to be_within(100).of(1000)
+    end
+
+    after do
+      DatabaseCleaner.clean
     end
   end
 

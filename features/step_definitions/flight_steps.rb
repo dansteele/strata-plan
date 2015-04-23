@@ -1,5 +1,7 @@
 When(/^there are airports in the database$/) do
   require "./db/seeds"
+  # Airport.create!(name: "Swansea", longitude: -4.067778, latitude: 51.605278)
+  # Airport.create!(name: "Dusseldorf", longitude: 6.766667, latitude: 51.289444)
 end
 
 When(/^create a flight for (\d+) people from "(.*?)" to "(.*?)"$/) do |people, start, finish|
