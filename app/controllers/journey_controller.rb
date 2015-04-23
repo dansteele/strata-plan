@@ -6,6 +6,7 @@ class JourneyController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    redirect_to trip_index_path if @journey.traveller != current_traveller
     @waypoints = @journey.waypoints
   end
 

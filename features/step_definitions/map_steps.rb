@@ -33,7 +33,7 @@ end
 
 Then(/^they are redirected if they try and visit it$/) do
   visit "/journey/#{Journey.last.id}"
-  expect(page.has_content? "My new journey").to be true # Name of their own journey
+  expect(page.has_content? "My journeys").to be true # Name of their own journey
 end
 
 Then(/^they should see their waypoints$/) do
