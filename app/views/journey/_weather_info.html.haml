@@ -3,4 +3,5 @@
   %ul
     %li= ("The nearest weather station is #{@obs.name.titleize}").html_safe 
     %li= ("Wind #{@obs.wind_direction}&deg; at #{@obs.wind_speed}mph").html_safe
-    
+    %li= ("Flight bearing #{@journey.flight_plan.bearing}&deg;").html_safe
+    %li= ("Headwind: #{@journey.flight_plan.get_headwind}mph")
