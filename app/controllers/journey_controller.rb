@@ -18,7 +18,6 @@ class JourneyController < ApplicationController
     if current_traveller.journeys << create_from_params
       redirect_to journey_path(current_traveller.journeys.last)
     else
-      binding.pry
       render text: "Unable to create journey"
     end
   end
