@@ -18,7 +18,9 @@ StrataPlan was intended to be an end-to-end trip planning tool. It features
 - Mocked HTTP requests
 
 There were two big things that I learned from this:
+
 1. When planning in PivotalTracker, research the APIs that I plan on using, since I made some silly assumptions about how the Google APIs would integrate.
+
 2. Don't use subclass inheritence until it seems appropriate: the scope of a class may change, and it's easy end up doing stuff like `if type == x`, which defeats the point.
 
 ###View the [StrataPlan site](http://strata-plan.herokuapp.com/)
