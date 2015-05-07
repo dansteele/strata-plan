@@ -4,7 +4,7 @@ JourneyMap.prototype.syncMarker = function(latLng) {
     parent: _this,
     method: "POST",
     url: "http://strata-plan.herokuapp.com/waypoints", // TODO: Make dynamic 
-    data: {latitude: latLng.D, longitude: latLng.k, journey: $('#map-canvas').data("journeyid")},
+    data: {latitude: latLng.F, longitude: latLng.A, journey: $('#map-canvas').data("journeyid")},
     success: function(res) {
       $('.waypoint-list').html(res);
       addDeleteListener();
