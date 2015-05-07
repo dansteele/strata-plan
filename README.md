@@ -5,7 +5,7 @@
 ###Completion time: 10 days
 
 
-StrataPlan was intended to be an end-to-end trip planning tool. It features
+StrataPlan is an end-to-end trip planning tool. It features
 - Google maps integration
 - MetOffice integration
 - AJAX
@@ -24,6 +24,8 @@ There were two big things that I learned from this:
 2. Don't use subclass inheritence until it seems appropriate: the scope of a class may change, and it's easy end up doing stuff like `if type == x`, which defeats the point.
 
 ###View the [StrataPlan site](http://strata-plan.herokuapp.com/)
+
+####View the [PivotalTracker project](https://www.pivotaltracker.com/n/projects/1321330)
 
 If you're browsing the code, pay special interest to
 - [Map javascript](https://github.com/dansteele/strata-plan/blob/master/app/assets/javascripts/journey.js)
