@@ -1,5 +1,5 @@
-#StrataPlan
-##Final Project for We Got Coders
+#StrataPlan (no longer active)
+##Trip planning MVP
 
 
 ###Completion time: 10 days
